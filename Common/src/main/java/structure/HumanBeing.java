@@ -23,6 +23,7 @@ public class HumanBeing implements java.lang.Comparable, Serializable {
 
 
     public HumanBeing(int id, String name, Coordinates coordinates, float age, Long impactSpeed, Double distanceTravelled, WeaponType weaponType, String owner) {
+        creationDate = new Date();
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;

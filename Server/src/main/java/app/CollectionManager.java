@@ -130,9 +130,7 @@ public class CollectionManager {
 
     private boolean insertHumanBeingToDB(HumanBeing humanBeing) {
         boolean success = false;
-
         humanBeing.setId(getNextHumanBeingsIdFromDB());
-        System.out.println(humanBeing.getCreationDate());
         Instant instant = humanBeing.getCreationDate().toInstant();
         Timestamp ts = instant != null ? Timestamp.from(instant) : null;
 
@@ -140,7 +138,7 @@ public class CollectionManager {
         PreparedStatement pst = null;
         try {
             con = DataAccessDriver.getInstance().getConnection();
-            String sql = "INSERT INTO \"humanbeing\" (\"id\", \"name\", \"creationDate\", \"weaponType\", \"x\", \"y\", \"age\", \"impactspeed\", \"distanceTravelled\", \"owner\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO \"humanbeings\" (\"id\", \"name\", \"creationDate\", \"weaponType\", \"x\", \"y\", \"age\", \"impactspeed\", \"distanceTravelled\", \"owner\") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pst = con.prepareStatement(sql);
             pst.setInt(1, humanBeing.getId());
             pst.setString(2, humanBeing.getName());
